@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="network">
+      <UniqueIdentifier>{1d7288cd-86ae-4bd2-bec3-1efffce9ff31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{3baf892a-aa30-491e-bedf-62271eb477f7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\network\network_service.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\include\noncopyable.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\include\cookie.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\include\platform.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\network\connection.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\network\connection_pool.h">
+      <Filter>network</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\network\network_service.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\source\cookie.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\network\connection.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\network\connection_pool.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
