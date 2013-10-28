@@ -10,9 +10,4 @@
       <Filter>platform</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\source\platform\platform_detail.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-  </ItemGroup>
 </Project>

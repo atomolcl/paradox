@@ -11,18 +11,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\source\common\include\connection.h" />
     <ClInclude Include="..\source\common\include\cookie.h" />
-    <ClInclude Include="..\source\common\include\noncopyable.h" />
+    <ClInclude Include="..\source\common\include\network_service.h" />
+    <ClInclude Include="..\source\common\include\paradox_message.h" />
     <ClInclude Include="..\source\common\include\platform.h" />
-    <ClInclude Include="..\source\network\connection.h" />
     <ClInclude Include="..\source\network\connection_pool.h" />
-    <ClInclude Include="..\source\network\network_service.h" />
+    <ClInclude Include="..\source\network\read_buffer.h" />
+    <ClInclude Include="..\source\network\ringbuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\common\source\cookie.cpp" />
     <ClCompile Include="..\source\network\connection.cpp" />
     <ClCompile Include="..\source\network\connection_pool.cpp" />
     <ClCompile Include="..\source\network\network_service.cpp" />
+    <ClCompile Include="..\source\network\read_buffer.cpp" />
+    <ClCompile Include="..\source\network\ringbuffer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6E4E1A52-3EBF-408F-B68F-5621B3AEDBA3}</ProjectGuid>
@@ -53,7 +57,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <GenerateManifest>false</GenerateManifest>
-    <OutDir>..\bin\debug</OutDir>
+    <OutDir>..\libraries\network\lib</OutDir>
     <IntDir>obj\network_debug\</IntDir>
     <TargetName>$(ProjectName)_debug</TargetName>
   </PropertyGroup>
@@ -61,7 +65,8 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\libraries\boost\include;..\source\common\include;..\libraries\platform\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\libraries\boost\include;..\source\common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;PARADOX_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

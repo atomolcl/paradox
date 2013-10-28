@@ -6,7 +6,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\source\network\test.cpp">
+    <ClCompile Include="..\source\test\network\test_client.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\test\network\test_server.cpp">
       <Filter>network</Filter>
     </ClCompile>
   </ItemGroup>

@@ -45,6 +45,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\source\common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -65,9 +66,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\source\platform\platform_detail.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\source\platform\platform_detail.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

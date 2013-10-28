@@ -9,23 +9,29 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\source\network\network_service.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\common\include\noncopyable.h">
-      <Filter>common</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\common\include\cookie.h">
       <Filter>common</Filter>
     </ClInclude>
     <ClInclude Include="..\source\common\include\platform.h">
       <Filter>common</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\network\connection.h">
-      <Filter>network</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\network\connection_pool.h">
       <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\include\paradox_message.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\network\ringbuffer.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\network\read_buffer.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\include\network_service.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\include\connection.h">
+      <Filter>common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +45,12 @@
       <Filter>network</Filter>
     </ClCompile>
     <ClCompile Include="..\source\network\connection_pool.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\network\ringbuffer.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\network\read_buffer.cpp">
       <Filter>network</Filter>
     </ClCompile>
   </ItemGroup>

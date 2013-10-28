@@ -3,40 +3,42 @@
 
 #include <stddef.h>
 #include <string.h>
+#include "cookie.h"
 
 namespace paradox {
-	connection_pool::connection_pool() : m_connections(NULL),
-																m_free_connection(NULL){}
+	connection_pool::connection_pool(boost::asio::io_service& io_service) 
+		: m_connections(NULL),
+		  m_free_connection(NULL),
+		  m_io_service(io_service)
+	{}
 
 	
 	connection_pool::~connection_pool() { destory(); }
 	
 
-	void connection_pool::initialize(boost::asio::io_service& io_service) {
-		/*to do rewrite connections numbers*/
-		int16_t connection_num = 1000;
-		m_connections = new connection[connection_num];
-		for (int16_t i = 0; i < connection_num; ++i)
-			m_connections[i].initialize(io_service, i+1);
+	void connection_pool::initialize() {
+		m_connections = new connection[MAX_CONNECTIONS_NUM];
+		for (int16_t i = 0; i < MAX_CONNECTIONS_NUM - 1; ++i)
+			m_connections[i].set_id(i+1);
 		
-		/*last set id = invalid*/
-		m_connections[connection_num - 1].set_id(-1);
-
 		m_free_connection = &m_connections[0];
 	}
 
 
 	connection* connection_pool::create_connection() {
-		boost::mutex::scoped_lock(m_mutex);
-
+		boost::mutex::scoped_lock lock(m_mutex);
 		connection* ret = NULL;
+
 		if (m_free_connection) {
 			ret = m_free_connection;
-			int next_free = m_free_connection->get_id();
-			if (next_free < 0)
+			int16_t next_free = m_free_connection->get_id();
+			if (next_free == connection::INVALID_ID)
 				m_free_connection = NULL;
 			else
 				m_free_connection = m_connections + next_free;
+
+			paradox_assert(ret);
+			ret->initialize(m_io_service, (int16_t)(ret - m_connections));
 		} else {
 			//to do
 		}
@@ -46,14 +48,19 @@ namespace paradox {
 
 
 	void connection_pool::delete_connection(connection* one) {
-		boost::mutex::scoped_lock(m_mutex);
+		boost::mutex::scoped_lock lock(m_mutex);
 
 		if (m_free_connection)
 			one->finalize((int16_t)(m_free_connection - m_connections));
 		else
-			one->finalize(-1);
+			one->finalize(connection::INVALID_ID);
 
 		m_free_connection = one;
+	}
+
+
+	void connection_pool::delete_connection(int16_t id) {
+		delete_connection(&m_connections[id]);
 	}
 
 	/************************praivate function***********************/
